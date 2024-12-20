@@ -1,11 +1,26 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TasksApp</title>
+    <title>Lista de Tareas</title>
+    <link rel="stylesheet" href="{% static 'task/styles.css' %}">
 </head>
 <body>
-    <h1>Hola TasksApp</h1>
+    <header>
+        <h1>Lista de Tareas</h1>
+    </header>
+    <div class="container">
+        <!-- contendor de tareas -->
+        <div class="task">
+            <span>Ejemplo de tarea 1</span>
+            <button>Eliminar</button>
+        </div>
+        <div class="task">
+            <span>Ejemplo de tarea 2</span>
+            <button>Eliminar</button>
+        </div>
+    </div>
 </body>
 </html>
