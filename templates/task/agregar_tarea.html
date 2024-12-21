@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Agregar Tarea</h2>
+
+    <!-- Formulario para agregar tarea -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+
+    <!-- Volver a la lista de tareas -->
+    <a href="{% url 'task_list' %}">Volver</a>
+</div>
+{% endblock %}

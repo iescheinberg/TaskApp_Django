@@ -1,26 +1,27 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Tareas</title>
-    <link rel="stylesheet" href="{% static 'task/styles.css' %}">
-</head>
-<body>
-    <header>
-        <h1>Lista de Tareas</h1>
-    </header>
-    <div class="container">
-        <!-- contendor de tareas -->
-        <div class="task">
-            <span>Ejemplo de tarea 1</span>
-            <button>Eliminar</button>
-        </div>
-        <div class="task">
-            <span>Ejemplo de tarea 2</span>
-            <button>Eliminar</button>
-        </div>
-    </div>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Lista de Tareas</h2>
+
+    <!-- Mostrar las tareas -->
+    {% if tasks %}
+        {% for task in tasks %}
+            <div class="task">
+                <span>{{ task.titulo }}</span>
+                <span>{{ task.fecha_vencimiento }}</span>
+                <form action="{% url 'borrar_tarea' task.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Eliminar</button>
+                </form>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No hay tareas creadas</p>
+    {% endif %}
+
+    <!-- Enlace para agregar nueva tarea -->
+    <a href="{% url 'agregar_tarea' %}">Nueva Tarea</a>
+</div>
+
+{% endblock %}
