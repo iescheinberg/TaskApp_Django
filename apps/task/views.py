@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import TaskForm
 from .models import Task
 # Create your views here.
@@ -21,7 +21,18 @@ def agregar_tarea(request):
         
     return render(request, 'task/agregar_tarea.html', {'form': form})
 
-
+# Editar tarea
+def editar_tarea(request, task_id):
+    tarea = get_object_or_404(Task, id=task_id)
+    if request.method == 'POST':
+        form = TaskForm(request.POST, instance=tarea)
+        if form.is_valid():
+            form.save()
+            return redirect('task_list')
+    else:
+        form = TaskForm(instance=tarea)
+        
+    return render(request, 'task/editar_tarea.html', {'form': form, 'tarea': tarea})
 
 # Borrar tarea
 def borrar_tarea(request, task_id):
