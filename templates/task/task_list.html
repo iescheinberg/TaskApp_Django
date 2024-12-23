@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
+
     <h2>Lista de Tareas</h2>
 
     <!-- Mostrar las tareas -->
@@ -11,9 +11,7 @@
                 <span>{{ task.titulo }}</span>
                 <span>{{ task.fecha_vencimiento }}</span>
                 <div>
-                    <button>
-                        <a href="{% url 'editar_tarea' task.id %}">Editar</a>
-                    </button>
+                    <button><a href="{% url 'editar_tarea' task.id %}" class="btn">Editar</a></button>
                     <form action="{% url 'borrar_tarea' task.id %}" method="post">
                         {% csrf_token %}
                         <button type="submit">Eliminar</button>
@@ -26,7 +24,9 @@
     {% endif %}
 
     <!-- Enlace para agregar nueva tarea -->
-    <a href="{% url 'agregar_tarea' %}">Nueva Tarea</a>
-</div>
+    <button class="new">
+        <a href="{% url 'agregar_tarea' %}">Nueva</a>
+    </button>
+
 
 {% endblock %}
