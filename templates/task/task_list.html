@@ -7,9 +7,16 @@
     <!-- Mostrar las tareas -->
     {% if tasks %}
         {% for task in tasks %}
-            <div class="task">
+            <div class="task" onclick="toggleDescription({{ task.id }})">
                 <span>{{ task.titulo }}</span>
                 <span>{{ task.fecha_vencimiento }}</span>
+
+                <!-- Descripcion tarea (oculto por defecto) -->
+                 <div class="task-description" id="description-{{ task.id }}">
+                    <p>{{ task.descripcion }}</p>
+                 </div>
+
+                <!-- Botones acciones de tarea -->
                 <div>
                     <button><a href="{% url 'editar_tarea' task.id %}" class="btn">Editar</a></button>
                     <form action="{% url 'borrar_tarea' task.id %}" method="post">
@@ -30,3 +37,5 @@
 
 
 {% endblock %}
+
+

@@ -103,6 +103,11 @@ a {
     color: grey;
 }
 
+/* Descripcion de tarea (olculto por defecto) */
+.task-description {
+    display: none;
+}
+
 
 /* Cuando no hay tareas */
 p {
