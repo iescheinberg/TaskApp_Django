@@ -12,6 +12,12 @@
     </form>
 
     <!-- Volver a la lista de tareas -->
-    <button><a href="{% url 'task_list' %}">Volver</a></button>
+     <div class="back-btn">
+        <button>
+            <a href="{% url 'task_list' %}">
+                <i class="fa-regular fa-house"></i>
+            </a>
+        </button>
+    </div>
 </div>
 {% endblock %}

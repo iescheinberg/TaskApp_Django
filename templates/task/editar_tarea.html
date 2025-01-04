@@ -9,7 +9,12 @@
             {{ form.as_p }}
             <button type="submit">Actualizar</button>
         </form>
-        <a href="{% url 'task_list' %}">Volver a la lista</a>
+        <div class="back-btn">
+            <a href="{% url 'task_list' %}">
+                <i class="fa-regular fa-house"></i>
+            </a>
+        </div>
+        
     </div>
 
 {% endblock %}

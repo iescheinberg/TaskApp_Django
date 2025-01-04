@@ -7,21 +7,27 @@
     <!-- Mostrar las tareas -->
     {% if tasks %}
         {% for task in tasks %}
-            <div class="task" onclick="toggleDescription({{ task.id }})">
+            <div class="task" onclick="toggleDescription({{task.id}})">
                 <span>{{ task.titulo }}</span>
                 <span>{{ task.fecha_vencimiento }}</span>
 
                 <!-- Descripcion tarea (oculto por defecto) -->
-                 <div class="task-description" id="description-{{ task.id }}">
+                <div class="task-description" id="description-{{ task.id }}">
                     <p>{{ task.descripcion }}</p>
-                 </div>
+                </div>
 
                 <!-- Botones acciones de tarea -->
                 <div>
-                    <button><a href="{% url 'editar_tarea' task.id %}" class="btn">Editar</a></button>
+                    <button class="edit">
+                        <a href="{% url 'editar_tarea' task.id %}" class="btn">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                        </a>
+                    </button>
                     <form action="{% url 'borrar_tarea' task.id %}" method="post">
                         {% csrf_token %}
-                        <button type="submit">Eliminar</button>
+                        <button type="submit">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -32,7 +38,9 @@
 
     <!-- Enlace para agregar nueva tarea -->
     <button class="new">
-        <a href="{% url 'agregar_tarea' %}">Nueva</a>
+        <a href="{% url 'agregar_tarea' %}">
+            <i class="fa-regular fa-house"></i>
+        </a>
     </button>
 
 

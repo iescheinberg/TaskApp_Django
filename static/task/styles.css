@@ -10,7 +10,7 @@ body {
 
 /* Encabezado */
 header {
-    background-color: #4CAF50;
+    background-color: #a6ad3c;
     color: white;
     padding: 20px;
     text-align: center;
@@ -47,7 +47,7 @@ a {
 }
 
 .new {
-    background-color: #5CB338;
+    background-color: #a6ad3c;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -74,9 +74,9 @@ a {
 
 
 
-/* Botón eliminar */
+/* Botón tarea */
 .task button {
-    background-color: #FB4141;
+    background-color: #bf2a23;
     text-decoration: none;
     color: white;
     border: none;
@@ -87,10 +87,17 @@ a {
     margin-bottom: 0.2em;
 }
 
+/* Boton de editar */
+.task .edit {
+    background-color: #f0ce4e;
+}
 
+.task .edit:hover {
+    background-color: #cf872e;
+}
 
 .task button:hover {
-    background-color: #d32f2f;
+    background-color: #8a211d;
 }
 
 
@@ -99,9 +106,7 @@ a {
     color: white;
 }
 
-.task a:hover {
-    color: grey;
-}
+
 
 /* Descripcion de tarea (olculto por defecto) */
 .task-description {
@@ -119,3 +124,14 @@ p {
 
 /* Boton editar */
 
+/* Boton de volver */
+.back-btn {
+    background-color: #a6ad3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-top: 0.2em;
+}
