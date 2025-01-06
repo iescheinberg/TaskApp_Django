@@ -7,9 +7,24 @@
     <!-- Mostrar las tareas -->
     {% if tasks %}
         {% for task in tasks %}
-            <div class="task" onclick="toggleDescription({{task.id}})">
-                <span>{{ task.titulo }}</span>
-                <span>{{ task.fecha_vencimiento }}</span>
+            <div class="task">
+                <form action="{% url 'marcar_completada' task.id %}" method="post" id="task-form-{{ task.id }}">
+                    {% csrf_token %}
+                    <input 
+                    type="checkbox" 
+                    name="completada" 
+                    {% if task.completado %}checked{% endif %}
+                    onchange="this.form.submit()"
+                >
+                    
+                </form>
+
+                <span {% if task.completado %} style="text-decoration: line-through;"{% endif %}>
+                    {{ task.titulo }}
+                </span>
+                <span>
+                    {{ task.fecha_vencimiento }}
+                </span>
 
                 <!-- Descripcion tarea (oculto por defecto) -->
                 <div class="task-description" id="description-{{ task.id }}">
@@ -17,13 +32,13 @@
                 </div>
 
                 <!-- Botones acciones de tarea -->
-                <div>
+                <div class="action-buttons">
                     <button class="edit">
                         <a href="{% url 'editar_tarea' task.id %}" class="btn">
                             <i class="fa-regular fa-pen-to-square"></i>
                         </a>
                     </button>
-                    <form action="{% url 'borrar_tarea' task.id %}" method="post">
+                    <form action="{% url 'borrar_tarea' task.id %}" method="post" onsubmit="return confirm('¿Deseas eliminar esta tarea?')">
                         {% csrf_token %}
                         <button type="submit">
                             <i class="fa-regular fa-trash-can"></i>
@@ -39,7 +54,7 @@
     <!-- Enlace para agregar nueva tarea -->
     <button class="new">
         <a href="{% url 'agregar_tarea' %}">
-            <i class="fa-regular fa-house"></i>
+            <i class="fa-regular fa-square-plus"></i>
         </a>
     </button>
 

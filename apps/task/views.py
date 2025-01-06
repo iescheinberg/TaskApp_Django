@@ -9,6 +9,14 @@ def task_list(request):
     return render(request, 'task/task_list.html', {'tasks': tasks})
 
 
+# Marcar tarea completada
+def marcar_completada(request, task_id):
+    task = Task.objects.get(id=task_id)
+    task.completado = not task.completado
+    task.save()
+    return redirect('task_list')
+
+
 # Borrar tarea
 def agregar_tarea(request):
     if request.method == 'POST':
